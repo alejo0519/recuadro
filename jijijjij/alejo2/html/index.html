@@ -1,0 +1,96 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Toggleable</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: opacity 0.3s ease;
+        }
+        .form-controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .form-controls button {
+            margin: 0 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .hide-minus {
+            display: none;
+        }
+        .hide-plus {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-controls">
+            <button id="minusBtn" onclick="hideForm()">-</button>
+            <button id="plusBtn" onclick="showForm()" class="hide-plus">+</button>
+        </div>
+        <form id="miFormulario">
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div>
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        function hideForm() {
+            const formulario = document.getElementById('miFormulario');
+            const minusBtn = document.getElementById('minusBtn');
+            const plusBtn = document.getElementById('plusBtn');
+            
+            formulario.classList.add('hidden');
+            minusBtn.classList.add('hide-minus');
+            plusBtn.classList.remove('hide-plus');
+        }
+
+        function showForm() {
+            const formulario = document.getElementById('miFormulario');
+            const minusBtn = document.getElementById('minusBtn');
+            const plusBtn = document.getElementById('plusBtn');
+            
+            formulario.classList.remove('hidden');
+            minusBtn.classList.remove('hide-minus');
+            plusBtn.classList.add('hide-plus');
+        }
+    </script>
+</body>
+</html>
